@@ -8,7 +8,7 @@ module.exports = {
   },
   backend: {
     type: 'mongodb',
-    url: "mongodb://localhost:27017/mosca"
+    url: "mongodb://192.168.99.100:27017/mosca"
   },
   persistence: {
     factory: mosca.persistence.Mongo,
