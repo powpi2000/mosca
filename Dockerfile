@@ -15,9 +15,11 @@ RUN apk update && \
     npm install --unsafe-perm --production && \
     apk del make gcc g++ python git
 
+WORKDIR /usr/src/app/mosca/example/secure
+
 EXPOSE 80
 EXPOSE 1883
 EXPOSE 8443
 
 #ENTRYPOINT ["/usr/src/app/bin/mosca", "-d", "/db", "--http-port", "80", "--http-bundle", "-v"]
-ENTRYPOINT ["node "]
+ENTRYPOINT ["node" ,"secureEmbedded.js"]
