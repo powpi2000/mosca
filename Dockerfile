@@ -15,7 +15,7 @@ RUN apk update && \
     npm install --unsafe-perm --production && \
     apk del make gcc g++ python git
 
-WORKDIR /usr/src/app/mosca/example/secure
+WORKDIR /usr/src/app/examples/secure
 
 EXPOSE 80
 EXPOSE 1883
