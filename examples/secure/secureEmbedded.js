@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 var mosca = require('../../')
 
 var SECURE_KEY = __dirname + '/myhost.key';
