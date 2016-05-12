@@ -22,4 +22,4 @@ EXPOSE 1883
 EXPOSE 8443
 
 #ENTRYPOINT ["/usr/src/app/bin/mosca", "-d", "/db", "--http-port", "80", "--http-bundle", "-v"]
-ENTRYPOINT ["node" ,"secureEmbedded.js"]
+ENTRYPOINT ["node" ,"./secureEmbedded.js"]
