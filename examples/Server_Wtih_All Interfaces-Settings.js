@@ -1,4 +1,5 @@
-var mosca = require('mosca');
+//var mosca = require('mosca');
+var mosca = require('../');
 
 var pubsubSettings = {
     /* For AMQP */

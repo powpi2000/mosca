@@ -26,7 +26,8 @@ describe("mosca.Server with redis persistence", function() {
         level: 60
       },
       backend : {
-        type: "redis"
+        type: "redis",
+        host:"192.168.99.100",
         // not reusing the connection
         // because ascoltatori has not an autoClose option
         // TODO it must be handled in mosca.Server

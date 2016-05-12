@@ -7,7 +7,7 @@ var CA_CERT = __dirname + '/../../../ca.crt';
 var settings = {
   logger: {
     name: "secureExample",
-    level: 40,
+    level: 30,
   },
   secure : {
     port: 8443,
@@ -23,9 +23,40 @@ var settings = {
     },
 };
 var server = new mosca.Server(settings);
+
+
+var authorizePublish = function (client, topic, payload, callback) {
+     if(this.opts.acl && this.opts.acl.write){
+        var writeAcl = this.opts.acl.write.replace('%c',client.id).replace(/\//g,'\\/').replace(/\./g,'\\.').replace('#','.*');
+        var aclRx = new RegExp('^'+writeAcl);
+        if(!aclRx.test(topic)){
+            callback({'msg':'can not publish'}, false);
+            return;
+        }
+     }
+    callback(null, true);
+}
+
+var authorizeSubscribe = function (client, topic, callback) {
+    if(this.opts.acl && this.opts.acl.read){
+        var readAcl = this.opts.acl.read.replace('%c',client.id).replace(/\//g,'\\/').replace(/\./g,'\\.').replace('#','.*');
+        var aclRx = new RegExp('^'+readAcl);
+        if(!aclRx.test(topic)){
+            callback({'msg':'can not subscribe'}, false);
+            return;
+        }
+     }
+
+    callback(null, true);
+}
+
+
 server.on('ready', setup);
 
-// fired when the mqtt server is ready
 function setup() {
-  console.log('Mosca secure server is up and running')
+    server.authorizePublish = authorizePublish;
+    server.authorizeSubscribe = authorizeSubscribe;
+    console.log('Mosca server is up and running.');
 }
+
+
