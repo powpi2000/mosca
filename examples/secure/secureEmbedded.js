@@ -1,8 +1,8 @@
 var mosca = require('../../')
 
-var SECURE_KEY = __dirname + '/../../../myhost.key';
-var SECURE_CERT = __dirname + '/../../../myhost.crt';
-var CA_CERT = __dirname + '/../../../ca.crt';
+var SECURE_KEY = __dirname + '/myhost.key';
+var SECURE_CERT = __dirname + '/myhost.crt';
+var CA_CERT = __dirname + '/ca.crt';
 
 var settings = {
   logger: {

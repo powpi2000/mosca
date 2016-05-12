@@ -3,7 +3,7 @@
 # VERSION 0.2.1
 
 FROM mhart/alpine-node:4
-MAINTAINER Matteo Collina <hello@matteocollina.com>
+MAINTAINER Eric Lin <eric.lin@orbweb.com>
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app/
@@ -17,5 +17,7 @@ RUN apk update && \
 
 EXPOSE 80
 EXPOSE 1883
+EXPOSE 8443
 
-ENTRYPOINT ["/usr/src/app/bin/mosca", "-d", "/db", "--http-port", "80", "--http-bundle", "-v"]
+#ENTRYPOINT ["/usr/src/app/bin/mosca", "-d", "/db", "--http-port", "80", "--http-bundle", "-v"]
+ENTRYPOINT ["node "]
