@@ -21,8 +21,4 @@ require("../lib/cli")(process.argv, function(err) {
     console.log(err);
     process.exit(1);
   }
-  process.on("SIGTERM", function(cb){
-    console.log("SIGTERM Catch!! broker server stop");
-    process.exit(0);
-  });
 });
